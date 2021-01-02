@@ -1,0 +1,20 @@
+{
+  "name": "discord_bot",
+  "version": "1.0.0",
+  "description": "random bot",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "fakemoses",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "reddit-image-fetcher": "^2.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
