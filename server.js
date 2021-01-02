@@ -7,7 +7,7 @@ const express = require('express')
 
 const app = express();
 const server = http.createServer(app);
-const PORT = '0.0.0.0' || process.env.PORT
+const PORT = process.env.PORT
 
 server.listen(PORT, () => console.log('Server running on port ', PORT))
 
