@@ -4,7 +4,9 @@ const path = require('path')
 const redditImageFetcher = require('reddit-image-fetcher')
 require('dotenv').config()
 var http = require('http');
-const express = require('express')
+const express = require('express');
+const eigen = require('./math')
+
 
 const app = express();
 const server = http.createServer(app);
@@ -15,6 +17,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 server.listen(PORT, () => console.log('Server running on port ', PORT))
 
 //npm run dev
+
+const solveCommand = '!solve-eigen'
 
 client.on('ready', () => {
     console.log('Bot is up')
@@ -31,7 +35,26 @@ client.on('message', msg => {
         });
     }
 
-    if(msg.content.search('!solve') >= 0){
+    if(pos = msg.content.search(solveCommand) >= 0){
+        //slice the eq from the main command
+        var content = msg.content
+        const con = content.slice(solveCommand.length,content.length)
+        
+
+        //split the equation for the solver
+        eq = JSON.parse(con);
+        
+        let {res, imaginary, vectors} = eigen(eq)
+
+        msg.channel.send(
+            'Eigenvalues are: '+ res 
+        )
+        msg.channel.send(
+            'Imaginary Eigenvalues are: '+ imaginary 
+        )
+        msg.channel.send(
+            'Eigenvectors are: '+ vectors 
+        )
 
     }
 });
