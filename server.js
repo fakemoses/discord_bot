@@ -1,5 +1,6 @@
 const { Client, MessageAttachment } = require('discord.js');
 const client = new Client()
+const path = require('path')
 const redditImageFetcher = require('reddit-image-fetcher')
 require('dotenv').config()
 var http = require('http');
