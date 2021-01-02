@@ -6,7 +6,7 @@ var http = require('http');
 
 http.createServer( ()=> {
     console.log('server is up')
-}).listen(process.env.PORT)
+}).listen(process.env.PORT, '0.0.0.0')
 
 
 //npm run dev
