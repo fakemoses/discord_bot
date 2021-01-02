@@ -3,14 +3,15 @@ const client = new Client()
 const redditImageFetcher = require('reddit-image-fetcher')
 require('dotenv').config()
 var http = require('http');
+const express = require('express')
 
-http.createServer( ()=> {
-    console.log('server is up')
-}).listen(process.env.PORT, '0.0.0.0')
+const app = express();
+const server = http.createServer(app);
+const PORT = '0.0.0.0' || process.env.PORT
 
+server.listen(PORT, () => console.log('Server running on port ', PORT))
 
 //npm run dev
-command1 = 'meme'
 
 client.on('ready', () => {
     console.log('Bot is up')
