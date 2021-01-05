@@ -40,7 +40,7 @@ client.on('message', msg => {
                     )
                 msg.channel.send(embed)
             })
-        }, 3000)
+        }, 60000*5)
     }
 
     //meme for fun
