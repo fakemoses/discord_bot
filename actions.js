@@ -1,12 +1,5 @@
 const { eigen, matmulSolve } = require('./math.js');
 const redditImageFetcher = require('reddit-image-fetcher')
-const KrakenClient = require('kraken-api')
-
-//KrakenAPI notifier
-const krakenKey = process.env.KRAKEN_API
-const krakenSecret = process.env.KRAKEN_SECRET
-
-const kraken       = new KrakenClient(krakenKey, krakenSecret);
 
 const matmulOpt = ['-m1', '-m2']
 const errorCommand = ['Please send the correct input!', 'For more infos about the command please send !help-commands', 'Please specify input for the matrix!']
@@ -98,23 +91,9 @@ function matrixMultiplication(discordMessage, msg) {
 
 }
 
-async function callKraken() {
-    let currentValueArray = await kraken.publicMethod('Ticker?pair=XXLMZEUR')
-    let balance = await kraken.api('Balance')
-
-    var myMoney = balance['result']['XXLM']
-    var tmp = currentValueArray['result']['XXLMZEUR']['c']
-    var currentValue = tmp[0]
-
-    totalMoney = myMoney * currentValue
-
-    return {totalMoney, myMoney, currentValue}
-}
-
 
 module.exports = {
     matrixMultiplication,
     eigenval,
     memes,
-    callKraken
 }

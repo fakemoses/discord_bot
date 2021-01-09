@@ -27,21 +27,6 @@ client.on('ready', () => {
 //discord bit main part 
 client.on('message', msg => {
 
-    //Bot to submit amount of money every 5 minutes
-    if (msg.content == '!cv') {
-        setInterval(() => {
-            callKraken().then(res => {
-                const embed = new MessageEmbed()
-                    .setTitle('Update Crypto!')
-                    .addFields(
-                        { name: 'Total Money in €: \n', value: res.totalMoney, inline: false },
-                        { name: 'Total Money in XLM: \n', value: res.myMoney, inline: false },
-                        { name: 'Exchange Rate 1 XLM to Euro: \n', value: res.currentValue, inline: false }
-                    )
-                msg.channel.send(embed)
-            })
-        }, 60000*5)
-    }
 
     //meme for fun
     if (msg.content === '!meme') {
